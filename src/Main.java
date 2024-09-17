@@ -10,8 +10,7 @@ public class Main {
         String dir_database = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
 
         Tweet[] database = extract_database(dir_database);
-        printArray(database, 10);
-
+        System.out.printf("%s", database[0].getMentioned_person_count());
     }
 
     public static Tweet[] extract_database(String dir){
@@ -29,7 +28,7 @@ public class Main {
                     long id = Long.parseLong(field[1]);
         
                     Tweet tweet = new Tweet(target, id, field[2], field[3], field[4], field[5]);
-                    database[i] = tweet;
+                    database[i-1] = tweet;
                 }
                 i++;
             }

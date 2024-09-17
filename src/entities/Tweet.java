@@ -1,7 +1,12 @@
 package entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Tweet {
-    //basics
+    //default
     private int target;
     private long id;
     private String date;
@@ -10,8 +15,8 @@ public class Tweet {
     private String text;
 
     //required
-    private String formated_date;
-    private String[] mentioned_person;
+    private String formatted_date;
+    private String mentioned_person;
     private int mentioned_person_count;
 
     public Tweet(int target, long id, String date, String flag, String user, String text){
@@ -21,6 +26,10 @@ public class Tweet {
         this.flag = flag;
         this.user = user;
         this.text = text;
+
+        setFormatted_date(format_date(date));
+        setMentioned_person(search_mentioned_person(text));
+        setMentioned_person_count(count_mentioned_person(this.mentioned_person));
     }
     
     //setters
@@ -36,10 +45,10 @@ public class Tweet {
     public void setDate(String date) {
         this.date = date;
     }
-    public void setFormated_date(String formated_date) {
-        this.formated_date = formated_date;
+    public void setFormatted_date(String formated_date) {
+        this.formatted_date = formated_date;
     }
-    public void setMentioned_person(String[] mentioned_person) {
+    public void setMentioned_person(String mentioned_person) {
         this.mentioned_person = mentioned_person;
     }
     public void setMentioned_person_count(int mentioned_person_count) {
@@ -65,10 +74,10 @@ public class Tweet {
     public String getDate() {
         return date;
     }
-    public String getFormated_date() {
-        return formated_date;
+    public String getFormatted_date() {
+        return formatted_date;
     }
-    public String[] getMentioned_person() {
+    public String getMentioned_person() {
         return mentioned_person;
     }
     public int getMentioned_person_count() {
@@ -82,6 +91,42 @@ public class Tweet {
     }
 
     //métodos
+    public String format_date(String dateString){
+        SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+        try {
+            Date date = inputFormat.parse(dateString);
+            String formattedDate = outputFormat.format(date);
+            return formattedDate;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public String search_mentioned_person(String text){
+        String[] palavras = text.split(" ");
+        String mentioned = "";
+
+        for (int i = 0; i < palavras.length; i++){
+            if (palavras[i].length() > 0 && palavras[i].charAt(0) == '@'){
+                if (!mentioned.isEmpty()){
+                    mentioned += "/";
+                }
+                mentioned += palavras[i];
+            }
+        }
+        return mentioned.isEmpty() ? null : mentioned; //se mentioned é vazio, retorna null. se não, retorna mentioned
+    }
+
+    public int count_mentioned_person(String mentioned){
+        int count = 0;
+        if (mentioned != null){
+            String[] person = mentioned.split("/");
+            count = person.length;
+        }
+        return count;
+    }
 
 }
