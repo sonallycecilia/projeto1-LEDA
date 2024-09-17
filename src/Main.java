@@ -5,35 +5,44 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String dir = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
+        String dir_database = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
 
-        String[] array = read_dataset(dir);
-        printArray(array, 100);
+        String[][] database = read_dataset(dir_database);
+        printArray(database, 10);
         
     }
 
-    public static String[] read_dataset(String dir){
+    public static String[][] read_dataset(String dir){
         String path = dir + File.separator + "tweets.csv";
         int lines = 1600000;
-        String[] array = new String[lines];
+        int fields = 6;
+        String[][] database = new String[lines][fields];
         
         try (BufferedReader file = new BufferedReader(new FileReader(path))){
             String line;
             int i = 0;
             while((line = file.readLine()) != null){
-                array[i] = line;
+                String[] tweet =  line.split(",");
+                database[i] = tweet;
                 i++;
             }
         } catch (IOException e) {
             System.out.println("Error extracting data");
             e.printStackTrace();
         }
-        return array;
+        return database;
     }
 
-    public static void printArray(String[] array, int qtd){
-        for (int i = 0; i < qtd; i++){
-            System.out.printf("%s\n", array[i]);
+    public static void write_ordened_data(String dir){
+
+    }
+
+    public static void printArray(String[][] database, int quantity){
+        for (int i = 0; i < quantity; i++){
+            for (int j = 0; j < database[i].length; j++){
+                System.out.printf("%s\n", database[i][j]);
+            }
+            System.out.println();
         }
     }
 }
