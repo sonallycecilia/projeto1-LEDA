@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String dir = "C:\\Users\\sonal\\Documents\\vs projects\\projeto1-LEDA\\main\\src\\database";
+        String dir = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
 
         String[] array = read_dataset(dir);
         printArray(array, 100);
@@ -14,7 +14,7 @@ public class Main {
 
     public static String[] read_dataset(String dir){
         String path = dir + File.separator + "tweets.csv";
-        int lines = 1500000;
+        int lines = 1600000;
         String[] array = new String[lines];
         
         try (BufferedReader file = new BufferedReader(new FileReader(path))){
@@ -34,7 +34,6 @@ public class Main {
     public static void printArray(String[] array, int qtd){
         for (int i = 0; i < qtd; i++){
             System.out.printf("%s\n", array[i]);
-            System.out.printf("%d\n", i);
         }
     }
 }
