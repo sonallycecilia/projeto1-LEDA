@@ -33,18 +33,6 @@ public class Tweet {
     }
     
     //setters
-    public void setText(String text) {
-        this.text = text;
-    }
-    public void setTarget(int target) {
-        this.target = target;
-    }
-    public void setUser(String user) {
-        this.user = user;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
     public void setFormatted_date(String formated_date) {
         this.formatted_date = formated_date;
     }
@@ -53,12 +41,6 @@ public class Tweet {
     }
     public void setMentioned_person_count(int mentioned_person_count) {
         this.mentioned_person_count = mentioned_person_count;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
-    public void setFlag(String flag) {
-        this.flag = flag;
     }
 
     //getters
@@ -106,15 +88,21 @@ public class Tweet {
     }
 
     public String search_mentioned_person(String text){
-        String[] palavras = text.split(" ");
+        String[] words = text.split(" ");
         String mentioned = "";
 
-        for (int i = 0; i < palavras.length; i++){
-            if (palavras[i].length() > 0 && palavras[i].charAt(0) == '@'){
-                if (!mentioned.isEmpty()){
-                    mentioned += "/";
+        for (int i = 0; i < words.length; i++) {
+            // Corrigindo a precedência dos operadores
+            if ((words[i].startsWith("@") || words[i].startsWith("\"")) && words[i].length() > 1) {
+                // Limpa caracteres indesejados, mantendo apenas @ e caracteres alfanuméricos
+                String mention = words[i].replaceAll("[^@\\w]", ""); 
+    
+                if (mention.startsWith("@")) {
+                    if (!mentioned.isEmpty()) {
+                        mentioned += "/";
+                    }
+                    mentioned += mention;
                 }
-                mentioned += palavras[i];
             }
         }
         return mentioned.isEmpty() ? null : mentioned; //se mentioned é vazio, retorna null. se não, retorna mentioned
