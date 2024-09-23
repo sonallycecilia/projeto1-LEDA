@@ -7,8 +7,8 @@ import java.util.Locale;
 
 public class Tweet {
     //default
-    private int target;
-    private long id;
+    private String target;
+    private String id;
     private String date;
     private String flag;
     private String user;
@@ -19,7 +19,7 @@ public class Tweet {
     private String mentioned_person;
     private int mentioned_person_count;
 
-    public Tweet(int target, long id, String date, String flag, String user, String text){
+    public Tweet(String target, String id, String date, String flag, String user, String text){
         this.target = target;
         this.id = id;
         this.date = date;
@@ -30,6 +30,17 @@ public class Tweet {
         setFormatted_date(format_date(date));
         setMentioned_person(search_mentioned_person(text));
         setMentioned_person_count(count_mentioned_person(this.mentioned_person));
+    }
+
+    public Tweet(String target, String id, String date, String flag, String user, String text, String mentioned_person, int mentioned_persons_count){
+        this.target = target;
+        this.id = id;
+        this.formatted_date = date;
+        this.flag = flag;
+        this.user = user;
+        this.text = text;
+        this.mentioned_person = mentioned_person;
+        this.mentioned_person_count = mentioned_persons_count;
     }
     
     //setters
@@ -47,7 +58,7 @@ public class Tweet {
     public String getText() {
         return text;
     }
-    public int getTarget() {
+    public String getTarget() {
         return target;
     }
     public String getUser() {
@@ -65,7 +76,7 @@ public class Tweet {
     public int getMentioned_person_count() {
         return mentioned_person_count;
     }
-    public long getId() {
+    public String getId() {
         return id;
     }
     public String getFlag() {
