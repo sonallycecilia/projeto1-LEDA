@@ -7,8 +7,8 @@ public class BubbleSort {
     public static void sortByDate(Tweet[] data){
         for (int i = 0; i < data.length - 1; i++){
             for (int j = 0; j < data.length -1; j++){
-                String day[] = data[j].getDate().split("/");
-                String nextDay[] = data[j+1].getDate().split("/");
+                String day[] = data[j].getFormatted_date().split("/");
+                String nextDay[] = data[j+1].getFormatted_date().split("/");
 
                 int day1 = Integer.parseInt(day[0]);
                 int month1 = Integer.parseInt(day[1]);

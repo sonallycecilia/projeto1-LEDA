@@ -35,7 +35,7 @@ public class Tweet {
     public Tweet(String target, String id, String date, String flag, String user, String text, String mentioned_person, int mentioned_persons_count){
         this.target = target;
         this.id = id;
-        this.date = date;
+        this.formatted_date = date;
         this.flag = flag;
         this.user = user;
         this.text = text;
