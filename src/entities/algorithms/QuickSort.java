@@ -12,7 +12,7 @@ public class QuickSort {
         }
     }
 
-    public static int partitionByDate(Tweet[] vetor, int esquerda, int direita) {
+    private static int partitionByDate(Tweet[] vetor, int esquerda, int direita) {
         Tweet pivo = vetor[(esquerda + direita) / 2];
         int i = esquerda - 1;
         int j = direita + 1;
@@ -20,11 +20,11 @@ public class QuickSort {
         while (true) {
             do {
                 i++;
-            } while (compareDates(vetor[i].getFormatted_date(), pivo.getFormatted_date()) < 0);
+            } while (compareDate(vetor[i].getFormatted_date(), pivo.getFormatted_date()) < 0);
 
             do {
                 j--;
-            } while (compareDates(vetor[j].getFormatted_date(), pivo.getFormatted_date()) > 0);
+            } while (compareDate(vetor[j].getFormatted_date(), pivo.getFormatted_date()) > 0);
 
             if (i >= j) {
                 return j;
@@ -36,7 +36,7 @@ public class QuickSort {
         }
     }
 
-    private static int compareDates(String date1, String date2) {
+    private static int compareDate(String date1, String date2) {
         String[] d1 = date1.split("/");
         String[] d2 = date2.split("/");
 
@@ -52,4 +52,5 @@ public class QuickSort {
         if (month1 != month2) return Integer.compare(month1, month2);
         return Integer.compare(day1, day2);
     }
+
 }

@@ -3,7 +3,7 @@ package entities;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Teste {
+public class Test {
     private long initialTime;
     private long endTime;
     private long duration;

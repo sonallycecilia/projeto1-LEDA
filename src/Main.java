@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import entities.Teste;
+import entities.Test;
 import entities.Tweet;
 import entities.algorithms.*;
 
@@ -21,27 +21,46 @@ public class Main {
         write_mentioned_persons_file(dir_project_database, "tweets_mentioned_persons", database);
         database = null;
 
-        
+        /* 
         Tweet[] teste = extract_test(dir_project_database, "tweets_teste");
         SelectionSort.sortByMentionedCount(teste);
         write_ordened_file(dir_project_database, "ex", teste);
-        
-
-        /* 
-        //QuickSort medio, melhor e pior caso (date)
-        database = extract_database(dir_project_database, "tweets_mentioned_persons");
-        QuickSort.sortByDate(database, 0, database.length-1); //medio caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_quickSort_medioCaso", database);
-        
-        MergeSort.mergeByDate(database); //melhor caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_mergeSort_melhorCaso", database);
-        MergeSort.mergeByReverseDate(database); //gerando pior caso
-        MergeSort.mergeByDate(database); //pior caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_mergeSort_piorCaso", database);
-        database = null;
         */
-
+        
         /* 
+        //HeapSort medio, melhor e pior caso (date)
+        database = extract_database(dir_project_database, "tweets_mentioned_persons");
+        HeapSort.sortByDate(database); //medio caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_heapSort_medioCaso", database);
+        HeapSort.sortByDate(database); //melhor caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_heapSort_melhorCaso", database);
+        MergeSort.mergeByReverseDate(database); //gerando pior caso
+        HeapSort.sortByDate(database); //pior caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_heapSort_piorCaso", database);
+        database = null;
+        
+        //HeapSort medio, melhor e pior caso (count)
+        database = extract_database(dir_project_database, "tweets_mentioned_persons");
+        HeapSort.sortByMentionedCount(database); //medio caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_count_heapSort_medioCaso", database);
+        HeapSort.sortByMentionedCount(database); //melhor caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_count_heapSort_melhorCaso", database);
+        MergeSort.mergeByReverseMentionedCount(database); //gerando pior caso
+        HeapSort.sortByMentionedCount(database); //pior caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_count_heapSort_piorCaso", database);
+        database = null;
+        
+        //HeapSort medio, melhor e pior caso (user)
+        database = extract_database(dir_project_database, "tweets_mentioned_persons");
+        HeapSort.sortByUser(database); //medio caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_user_heapSort_medioCaso", database);
+        HeapSort.sortByUser(database); //melhor caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_user_heapSort_melhorCaso", database);
+        MergeSort.mergeByReverseUser(database); //gerando pior caso
+        HeapSort.sortByUser(database); //pior caso
+        write_ordened_file(dir_project_database, "tweets_mentioned_persons_user_heapSort_piorCaso", database);
+        database = null;
+        
         //MergeSort medio, melhor e pior caso (date)
         database = extract_database(dir_project_database, "tweets_mentioned_persons");
         MergeSort.mergeByDate(database); //medio caso
