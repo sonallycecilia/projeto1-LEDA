@@ -23,20 +23,9 @@ public class Main {
 
         
         Tweet[] teste = extract_test(dir_project_database, "tweets_teste");
-        InsertionSort.sortByUser(teste);
+        SelectionSort.sortByMentionedCount(teste);
         write_ordened_file(dir_project_database, "ex", teste);
         
-
-        //MergeSort medio, melhor e pior caso (date)
-        database = extract_database(dir_project_database, "tweets_mentioned_persons");
-        MergeSort.mergeByDate(database); //medio caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_mergeSort_medioCaso", database);
-        MergeSort.mergeByDate(database); //melhor caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_mergeSort_melhorCaso", database);
-        MergeSort.mergeByReverseDate(database); //gerando pior caso
-        MergeSort.mergeByDate(database); //pior caso
-        write_ordened_file(dir_project_database, "tweets_mentioned_persons_date_mergeSort_piorCaso", database);
-        database = null;
 
         /* 
         //QuickSort medio, melhor e pior caso (date)
@@ -52,7 +41,7 @@ public class Main {
         database = null;
         */
 
-
+        /* 
         //MergeSort medio, melhor e pior caso (date)
         database = extract_database(dir_project_database, "tweets_mentioned_persons");
         MergeSort.mergeByDate(database); //medio caso
@@ -85,10 +74,7 @@ public class Main {
         MergeSort.mergeByUser(database); //pior caso
         write_ordened_file(dir_project_database, "tweets_mentioned_persons_user_mergeSort_piorCaso", database);
         database = null;
-
-        
-
-    
+        */
     }
 
     public static Tweet[] extract_tweets_database(String dir){

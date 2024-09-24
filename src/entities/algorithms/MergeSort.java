@@ -23,7 +23,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByDate(Tweet array[], Tweet left[], Tweet right[]) {
+    private static void sortByDate(Tweet array[], Tweet left[], Tweet right[]) {
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             String[] dateLeft = left[i].getFormatted_date().split("/");
@@ -80,7 +80,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByMentionedCount(Tweet[] array, Tweet left[], Tweet right[]){
+    private static  void sortByMentionedCount(Tweet[] array, Tweet left[], Tweet right[]){
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             if (left[i].getMentioned_person_count() > right[j].getMentioned_person_count()) {
@@ -125,7 +125,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByUser(Tweet[] array, Tweet left[], Tweet right[]){
+    private static void sortByUser(Tweet[] array, Tweet left[], Tweet right[]){
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             if (left[i].getUser().compareTo(right[j].getUser()) < 0) {
@@ -169,7 +169,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByReverseDate(Tweet[] array, Tweet left[], Tweet right[]){
+    private static void sortByReverseDate(Tweet[] array, Tweet left[], Tweet right[]){
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             String[] dateLeft = left[i].getFormatted_date().split("/");
@@ -226,7 +226,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByReverseMentionedCount(Tweet[] array, Tweet[] left, Tweet[] right) {
+    private static void sortByReverseMentionedCount(Tweet[] array, Tweet[] left, Tweet[] right) {
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             if (left[i].getMentioned_person_count() > right[j].getMentioned_person_count()) {
@@ -271,7 +271,7 @@ public class MergeSort {
         }
     }
 
-    public static void sortByReverseUser(Tweet[] array, Tweet[] left, Tweet[] right) {
+    private static void sortByReverseUser(Tweet[] array, Tweet[] left, Tweet[] right) {
         int i = 0, j = 0, k = 0;
         while (i < left.length && j < right.length) {
             if (left[i].getUser().compareTo(right[j].getUser()) > 0) {
