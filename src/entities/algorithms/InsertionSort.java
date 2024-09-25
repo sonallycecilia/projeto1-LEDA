@@ -7,39 +7,19 @@ public class InsertionSort {
     public static void sortByDate(Tweet[] array) {
         for (int i = 1; i < array.length; i++) {
             Tweet temp = array[i]; 
-            int j = i - 1; 
-
-            String[] tempDate = temp.getFormatted_date().split("/");
-
-            int tempDay = Integer.parseInt(tempDate[0]);
-            int tempMonth = Integer.parseInt(tempDate[1]);
-            int tempYear = Integer.parseInt(tempDate[2]);
-
+            int j = i - 1;
     
-            while (j >= 0 && compareDate(array[j], tempDay, tempMonth, tempYear)) {
+            // Comparar as datas de maneira hierárquica (ano > mês > dia)
+            while (j >= 0 && 
+                   (temp.getYear() < array[j].getYear() || 
+                   (temp.getYear() == array[j].getYear() && temp.getMonth() < array[j].getMonth()) ||
+                   (temp.getYear() == array[j].getYear() && temp.getMonth() == array[j].getMonth() && temp.getDay() < array[j].getDay()))) {
                 array[j + 1] = array[j];
                 j--;
             }
-            array[j + 1] = temp;
+            
+            array[j + 1] = temp; // Insere o item na posição correta
         }
-    }
-
-    private static boolean compareDate(Tweet tweet, int day, int month, int year) {
-        String[] tweetDateParts = tweet.getFormatted_date().split("/");
-        int tweetDay = Integer.parseInt(tweetDateParts[0]);
-        int tweetMonth = Integer.parseInt(tweetDateParts[1]);
-        int tweetYear = Integer.parseInt(tweetDateParts[2]);
-
-        if (tweetYear > year) {
-            return true;
-        } else if (tweetYear == year) {
-            if (tweetMonth > month) {
-                return true;
-            } else if (tweetMonth == month) {
-                return tweetDay > day;
-            }
-        }
-        return false;
     }
 
     public static void sortByMentionedCount(Tweet[] array){

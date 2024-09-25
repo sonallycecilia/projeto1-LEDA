@@ -22,43 +22,34 @@ public class HeapSort {
         int largest = i; 
         int left = 2 * i + 1; 
         int right = 2 * i + 2; 
-
-        if (left < n && compareDate(array[left], array[largest])) {
-            largest = left;
+    
+        // Verificar o filho da esquerda
+        if (left < n) {
+            if (array[left].getYear() > array[largest].getYear() || 
+                (array[left].getYear() == array[largest].getYear() && array[left].getMonth() > array[largest].getMonth()) ||
+                (array[left].getYear() == array[largest].getYear() && array[left].getMonth() == array[largest].getMonth() && array[left].getDay() > array[largest].getDay())) {
+                    largest = left;
+            }
         }
-        if (right < n && compareDate(array[right], array[largest])) {
-            largest = right;
+    
+        // Verificar o filho da direita
+        if (right < n) {
+            if (array[right].getYear() > array[largest].getYear() || 
+                (array[right].getYear() == array[largest].getYear() && array[right].getMonth() > array[largest].getMonth()) ||
+                (array[right].getYear() == array[largest].getYear() && array[right].getMonth() == array[largest].getMonth() && array[right].getDay() > array[largest].getDay())) {
+                    largest = right;
+            }
         }
+    
+        // Troca se necessário
         if (largest != i) {
             Tweet swap = array[i];
             array[i] = array[largest];
             array[largest] = swap;
-
+    
+            // Recursão para garantir que a subárvore está em heap
             heapByDate(array, n, largest);
         }
-    }
-
-    private static boolean compareDate(Tweet tweet1, Tweet tweet2) {
-        String[] date1Parts = tweet1.getFormatted_date().split("/");
-        int day1 = Integer.parseInt(date1Parts[0]);
-        int month1 = Integer.parseInt(date1Parts[1]);
-        int year1 = Integer.parseInt(date1Parts[2]);
-
-        String[] date2Parts = tweet2.getFormatted_date().split("/");
-        int day2 = Integer.parseInt(date2Parts[0]);
-        int month2 = Integer.parseInt(date2Parts[1]);
-        int year2 = Integer.parseInt(date2Parts[2]);
-
-        if (year1 > year2) {
-            return true;
-        } else if (year1 == year2) {
-            if (month1 > month2) {
-                return true;
-            } else if (month1 == month2) {
-                return day1 > day2;
-            }
-        }
-        return false;
     }
 
     public static void sortByMentionedCount(Tweet[] array) {

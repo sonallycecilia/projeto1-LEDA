@@ -13,6 +13,9 @@ public class Tweet {
     private String flag;
     private String user;
     private String text;
+    private int day;
+    private int month;
+    private int year;
 
     //required
     private String formatted_date;
@@ -32,15 +35,17 @@ public class Tweet {
         setMentioned_person_count(count_mentioned_person(this.mentioned_person));
     }
 
-    public Tweet(String target, String id, String date, String flag, String user, String text, String mentioned_person, int mentioned_persons_count){
+    public Tweet(String target, String id, String formattedDate, String flag, String user, String text, String mentioned_person, int mentioned_persons_count){
         this.target = target;
         this.id = id;
-        this.formatted_date = date;
+        this.formatted_date = formattedDate;
         this.flag = flag;
         this.user = user;
         this.text = text;
         this.mentioned_person = mentioned_person;
         this.mentioned_person_count = mentioned_persons_count;
+
+        generateSplittedDates(this.formatted_date);
     }
     
     //setters
@@ -52,6 +57,15 @@ public class Tweet {
     }
     public void setMentioned_person_count(int mentioned_person_count) {
         this.mentioned_person_count = mentioned_person_count;
+    }
+    public void setDay(int dia) {
+        this.day = dia;
+    }
+    public void setMonth(int mes) {
+        this.month = mes;
+    }
+    public void setYear(int ano) {
+        this.year = ano;
     }
 
     //getters
@@ -81,6 +95,15 @@ public class Tweet {
     }
     public String getFlag() {
         return flag;
+    }
+    public int getDay() {
+        return day;
+    }
+    public int getMonth() {
+        return month;
+    }
+    public int getYear() {
+        return year;
     }
 
     //metódos
@@ -124,6 +147,14 @@ public class Tweet {
             count = person.length;
         }
         return count;
+    }
+
+    public void generateSplittedDates(String date){
+        String[] dates = date.split("/");
+
+        setDay(Integer.parseInt(dates[0]));
+        setMonth(Integer.parseInt(dates[1]));
+        setYear(Integer.parseInt(dates[2]));
     }
 
 }

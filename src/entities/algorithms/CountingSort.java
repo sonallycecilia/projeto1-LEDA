@@ -10,7 +10,8 @@ public class CountingSort {
 
         int[] dateValues = new int[n];
         for (int i = 0; i < n; i++) {
-            dateValues[i] = dateToNumber(array[i].getFormatted_date());
+            int dateToNumber = array[i].getYear() * 10000 + array[i].getMonth() * 100 + array[i].getDay();
+            dateValues[i] = dateToNumber;
         }
 
         int max = dateValues[0];
@@ -40,15 +41,6 @@ public class CountingSort {
         for (int i = 0; i < n; i++) {
             array[i] = sortedArray[i];
         }
-    }
-
-    private static int dateToNumber(String date) {
-        String[] parts = date.split("/");
-        int day = Integer.parseInt(parts[0]);
-        int month = Integer.parseInt(parts[1]);
-        int year = Integer.parseInt(parts[2]);
-
-        return year * 10000 + month * 100 + day;
     }
 
     public static void sortByMentionedCount(Tweet[] array) {
