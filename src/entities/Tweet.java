@@ -83,7 +83,7 @@ public class Tweet {
         return flag;
     }
 
-    //métodos
+    //metódos
     public String format_date(String dateString){
         SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -103,9 +103,7 @@ public class Tweet {
         String mentioned = "";
 
         for (int i = 0; i < words.length; i++) {
-            // Corrigindo a precedência dos operadores
             if ((words[i].startsWith("@") || words[i].startsWith("\"")) && words[i].length() > 1) {
-                // Limpa caracteres indesejados, mantendo apenas @ e caracteres alfanuméricos
                 String mention = words[i].replaceAll("[^@\\w]", ""); 
     
                 if (mention.startsWith("@")) {
