@@ -9,6 +9,7 @@ Após fazer o dowload em [https://www.kaggle.com/datasets/bhavikjikadara/tweets-
 Para o sistema Windows, lembre-se de utilizar duas barras \\ ao invés de uma.
 
 *Caminho original Windows ->* C:\Users\sonally\Documents\vsProjects\projeto1-LEDA
+
 *Caminho depois de alterado ->*  C:\\Users\\sonally\\Documents\\vs projects\\projeto1-LEDA
 
 Para sistemas MacOS e Linux, o caminho do diretório utiliza barras simples / ao invés de barras duplas. Garanta que o caminho esteja no formato correto.
