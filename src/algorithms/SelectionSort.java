@@ -1,6 +1,6 @@
-package entities.algorithms;
+package algorithms;
 
-import entities.Tweet;
+import utils.Tweet;
 
 public class SelectionSort {
 
