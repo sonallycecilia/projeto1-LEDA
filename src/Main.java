@@ -11,7 +11,7 @@ import entities.algorithms.*;
 public class Main {
     
     public static final String DIR_TWEETS_DATABASE = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
-    public static final String DIR_PROJECT_DATABASE = System.getProperty("user.dir") + File.separator + "src\\database";
+    public static final String DIR_PROJECT_DATABASE = System.getProperty("user.dir") + File.separator + "src" + File.separator + "database";
     
     public static void main(String[] args) throws Exception {
         Tweet[] database;

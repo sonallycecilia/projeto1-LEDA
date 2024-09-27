@@ -9,7 +9,6 @@ public class InsertionSort {
             Tweet temp = array[i]; 
             int j = i - 1;
     
-            // Comparar as datas de maneira hierárquica (ano > mês > dia)
             while (j >= 0 && 
                    (temp.getYear() < array[j].getYear() || 
                    (temp.getYear() == array[j].getYear() && temp.getMonth() < array[j].getMonth()) ||
@@ -18,7 +17,7 @@ public class InsertionSort {
                 j--;
             }
             
-            array[j + 1] = temp; // Insere o item na posição correta
+            array[j + 1] = temp; 
         }
     }
 
