@@ -6,7 +6,7 @@ Após fazer o dowload em [https://www.kaggle.com/datasets/bhavikjikadara/tweets-
 *Exemplo*
 `public static final String DIR_TWEETS_DATABASE = "coloque o caminho aqui";`
 
-Para o sistema Windows, lembre-se de utilizar duas barras \\ ao invés de uma:
+Para o sistema Windows, lembre-se de utilizar duas barras \\ ao invés de uma.
 *Caminho original Windows ->* C:\Users\sonally\Documents\vsProjects\projeto1-LEDA
 *Caminho depois de alterado ->*  C:\\Users\\sonally\\Documents\\vs projects\\projeto1-LEDA
 
