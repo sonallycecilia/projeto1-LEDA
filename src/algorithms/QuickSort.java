@@ -233,30 +233,6 @@ public class QuickSort {
     }
 
     //user
-    public static void sortByUser(Tweet[] array, int low, int high) {
-        if (low < high) {
-            int pi = partitionByUser(array, low, high);
-            sortByUser(array, low, pi - 1);  // Recursão para a parte esquerda
-            sortByUser(array, pi + 1, high); // Recursão para a parte direita
-        }
-    }
-    
-    private static int partitionByUser(Tweet[] array, int low, int high) {
-        String pivot = array[high].getUser(); // Escolhe o último elemento como pivô
-        int i = (low - 1); // Índice do menor elemento
-    
-        for (int j = low; j < high; j++) {
-            // Compara os nomes dos usuários para ordenar em ordem alfabética
-            if (array[j].getUser().compareTo(pivot) < 0) {
-                i++;
-                swap(array, i, j); // Troca
-            }
-        }
-    
-        swap(array, i + 1, high); // Troca o pivô para a posição correta
-        return i + 1; // Retorna o índice do pivô
-    }
-
     public static void sortByUserIterative(Tweet[] array) {
         // Verifica se o array é nulo ou vazio
         if (array == null || array.length == 0) {
@@ -292,7 +268,23 @@ public class QuickSort {
             }
         }
     }
+
+    private static int partitionByUser(Tweet[] array, int low, int high) {
+        String pivot = array[high].getUser(); // Escolhe o último elemento como pivô
+        int i = (low - 1); // Índice do menor elemento
     
+        for (int j = low; j < high; j++) {
+            // Compara os nomes dos usuários para ordenar em ordem alfabética
+            if (array[j].getUser().compareTo(pivot) < 0) {
+                i++;
+                swap(array, i, j); // Troca
+            }
+        }
+    
+        swap(array, i + 1, high); // Troca o pivô para a posição correta
+        return i + 1; // Retorna o índice do pivô
+    }
+
     //geral
     private static void swap(Tweet[] array, int i, int j) {
         Tweet temp = array[i];
