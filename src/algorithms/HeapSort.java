@@ -1,6 +1,6 @@
-package entities.algorithms;
+package algorithms;
 
-import entities.Tweet;
+import utils.Tweet;
 
 public class HeapSort {
     
@@ -23,7 +23,6 @@ public class HeapSort {
         int left = 2 * i + 1; 
         int right = 2 * i + 2; 
     
-        // Verificar o filho da esquerda
         if (left < n) {
             if (array[left].getYear() > array[largest].getYear() || 
                 (array[left].getYear() == array[largest].getYear() && array[left].getMonth() > array[largest].getMonth()) ||
@@ -32,7 +31,6 @@ public class HeapSort {
             }
         }
     
-        // Verificar o filho da direita
         if (right < n) {
             if (array[right].getYear() > array[largest].getYear() || 
                 (array[right].getYear() == array[largest].getYear() && array[right].getMonth() > array[largest].getMonth()) ||
@@ -41,13 +39,11 @@ public class HeapSort {
             }
         }
     
-        // Troca se necessário
         if (largest != i) {
             Tweet swap = array[i];
             array[i] = array[largest];
             array[largest] = swap;
     
-            // Recursão para garantir que a subárvore está em heap
             heapByDate(array, n, largest);
         }
     }
@@ -55,45 +51,37 @@ public class HeapSort {
     public static void sortByMentionedCount(Tweet[] array) {
         int n = array.length;
 
-        // Constrói o heap (rearranja o array)
         for (int i = n / 2 - 1; i >= 0; i--) {
             heapByMentionedCount(array, n, i);
         }
 
-        // Extrai os elementos do heap um por um
         for (int i = n - 1; i >= 0; i--) {
-            // Move o maior valor (na raiz) para o final do array
             Tweet temp = array[0];
             array[0] = array[i];
             array[i] = temp;
 
-            // Chama heapify no heap reduzido
             heapByMentionedCount(array, i, 0);
         }
     }
 
     private static void heapByMentionedCount(Tweet[] array, int n, int i) {
-        int largest = i;  // Inicializa o maior como raiz
-        int left = 2 * i + 1;  // Filho à esquerda
-        int right = 2 * i + 2;  // Filho à direita
+        int largest = i;  
+        int left = 2 * i + 1;  
+        int right = 2 * i + 2;  
 
-        // Se o filho à esquerda existe e o número de menções à esquerda for maior
         if (left < n && array[left].getMentioned_person_count() < array[largest].getMentioned_person_count()) {
             largest = left;
         }
 
-        // Se o filho à direita existe e o número de menções à direita for maior
         if (right < n && array[right].getMentioned_person_count() < array[largest].getMentioned_person_count()) {
             largest = right;
         }
 
-        // Se o maior não for a raiz, troca os elementos
         if (largest != i) {
             Tweet swap = array[i];
             array[i] = array[largest];
             array[largest] = swap;
 
-            // Recursivamente faz heapify no sub-heap afetado
             heapByMentionedCount(array, n, largest);
         }
     }

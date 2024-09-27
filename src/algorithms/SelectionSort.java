@@ -1,6 +1,6 @@
-package entities.algorithms;
+package algorithms;
 
-import entities.Tweet;
+import utils.Tweet;
 
 public class SelectionSort {
 
@@ -8,17 +8,13 @@ public class SelectionSort {
         for (int i = 0; i < array.length; i++) {
             int menor = i;
             
-            // Loop para encontrar o menor elemento a partir de i + 1
             for (int j = i + 1; j < array.length; j++) {
-                // Comparação de datas hierárquica (ano, mês e dia)
                 if (array[j].getYear() < array[menor].getYear() || 
                     (array[j].getYear() == array[menor].getYear() && array[j].getMonth() < array[menor].getMonth()) ||
                     (array[j].getYear() == array[menor].getYear() && array[j].getMonth() == array[menor].getMonth() && array[j].getDay() < array[menor].getDay())) {
                         menor = j;
                 }
             }
-            
-            // Troca o menor elemento com o elemento na posição i
             Tweet temp = array[menor];
             array[menor] = array[i];
             array[i] = temp;

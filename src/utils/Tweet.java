@@ -1,4 +1,4 @@
-package entities;
+package utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,14 +13,14 @@ public class Tweet {
     private String flag;
     private String user;
     private String text;
-    private int day;
-    private int month;
-    private int year;
 
     //required
     private String formatted_date;
     private String mentioned_person;
     private int mentioned_person_count;
+    private int day;
+    private int month;
+    private int year;
 
     public Tweet(String target, String id, String date, String flag, String user, String text){
         this.target = target;

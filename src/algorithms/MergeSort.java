@@ -1,6 +1,6 @@
-package entities.algorithms;
+package algorithms;
 
-import entities.Tweet;
+import utils.Tweet;
 
 public class MergeSort {
 
@@ -44,7 +44,6 @@ public class MergeSort {
             k++;
         }
     
-        // Copiar os elementos restantes do array `right`, se houver
         while (j < right.length) {
             array[k] = right[j];
             j++;
