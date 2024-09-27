@@ -13,3 +13,5 @@ Para o sistema Windows, lembre-se de utilizar duas barras \\ ao invés de uma.
 *Caminho depois de alterado ->*  C:\\Users\\sonally\\Documents\\vs projects\\projeto1-LEDA
 
 Para sistemas MacOS e Linux, o caminho do diretório utiliza barras simples / ao invés de barras duplas. Garanta que o caminho esteja no formato correto.
+
+![Exemplo onde a string deve ser inserida](https://raw.githubusercontent.com/sonallycecilia/UEPB/refs/heads/main/Captura%20de%20tela%202024-09-27%20200452.png?token=GHSAT0AAAAAACV6J2FVLC3NGEPJQCQCECHKZXXJILQ)
