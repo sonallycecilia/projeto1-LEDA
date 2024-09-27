@@ -25,21 +25,11 @@ public class MergeSort {
 
     private static void sortByDate(Tweet array[], Tweet left[], Tweet right[]) {
         int i = 0, j = 0, k = 0;
+        
         while (i < left.length && j < right.length) {
-            String[] dateLeft = left[i].getFormatted_date().split("/");
-            String[] dateRight = right[j].getFormatted_date().split("/");
-
-            int dayLeft = Integer.parseInt(dateLeft[0]);
-            int monthLeft = Integer.parseInt(dateLeft[1]);
-            int yearLeft = Integer.parseInt(dateLeft[2]);
-
-            int dayRight = Integer.parseInt(dateRight[0]);
-            int monthRight = Integer.parseInt(dateRight[1]);
-            int yearRight = Integer.parseInt(dateRight[2]);
-
-            if (yearLeft < yearRight || 
-               (yearLeft == yearRight && monthLeft < monthRight) || 
-               (yearLeft == yearRight && monthLeft == monthRight && dayLeft <= dayRight)) {
+            if (left[i].getYear() < right[j].getYear() || 
+                (left[i].getYear() == right[j].getYear() && left[i].getMonth() < right[j].getMonth()) || 
+                (left[i].getYear() == right[j].getYear() && left[i].getMonth() == right[j].getMonth() && left[i].getDay() <= right[j].getDay())) {
                 array[k] = left[i];
                 i++;
             } else {
@@ -48,12 +38,13 @@ public class MergeSort {
             }
             k++;
         }
-
         while (i < left.length) {
             array[k] = left[i];
             i++;
             k++;
         }
+    
+        // Copiar os elementos restantes do array `right`, se houver
         while (j < right.length) {
             array[k] = right[j];
             j++;
@@ -169,23 +160,14 @@ public class MergeSort {
         }
     }
 
-    private static void sortByReverseDate(Tweet[] array, Tweet left[], Tweet right[]){
+    private static void sortByReverseDate(Tweet[] array, Tweet left[], Tweet right[]) {
         int i = 0, j = 0, k = 0;
+        
         while (i < left.length && j < right.length) {
-            String[] dateLeft = left[i].getFormatted_date().split("/");
-            String[] dateRight = right[j].getFormatted_date().split("/");
 
-            int dayLeft = Integer.parseInt(dateLeft[0]);
-            int monthLeft = Integer.parseInt(dateLeft[1]);
-            int yearLeft = Integer.parseInt(dateLeft[2]);
-
-            int dayRight = Integer.parseInt(dateRight[0]);
-            int monthRight = Integer.parseInt(dateRight[1]);
-            int yearRight = Integer.parseInt(dateRight[2]);
-
-            if (yearLeft > yearRight || 
-               (yearLeft == yearRight && monthLeft > monthRight) || 
-               (yearLeft == yearRight && monthLeft == monthRight && dayLeft >= dayRight)) {
+            if (left[i].getYear() > right[j].getYear() || 
+                (left[i].getYear() == right[j].getYear() && left[i].getMonth() > right[j].getMonth()) || 
+                (left[i].getYear() == right[j].getYear() && left[i].getMonth() == right[j].getMonth() && left[i].getDay() >= right[j].getDay())) {
                 array[k] = left[i];
                 i++;
             } else {
@@ -194,7 +176,6 @@ public class MergeSort {
             }
             k++;
         }
-
         while (i < left.length) {
             array[k] = left[i];
             i++;
@@ -206,6 +187,7 @@ public class MergeSort {
             k++;
         }
     }
+    
 
     public static void mergeByReverseMentionedCount(Tweet[] array){
         if (array.length <= 1) {
