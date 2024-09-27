@@ -5,34 +5,32 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import entities.Test;
 import entities.Tweet;
 import entities.algorithms.*;
 
 public class Main {
     
     public static final String DIR_TWEETS_DATABASE = "C:\\Users\\sonal\\Documents\\vs projects\\databaseTweets";
-    public static final String DIR_PROJECT_DATABASE = "C:\\Users\\sonal\\Documents\\vs projects\\projeto1-LEDA\\src\\database";
+    public static final String DIR_PROJECT_DATABASE = System.getProperty("user.dir") + File.separator + "src\\database";
     
     public static void main(String[] args) throws Exception {
         Tweet[] database;
+        System.out.println();
         
         database = extract_tweets_database(DIR_TWEETS_DATABASE);
         write_date_file("tweets_formatted_date", database);
         write_mentioned_persons_file("tweets_mentioned_persons", database);
         database = null;
 
-         
         //Tweet[] teste = extract_test("tweets_teste");
-        //SelectionSort.sortByMentionedCount(teste);
+        //QuickSort.sortByDateIterativo(teste);
         //write_ordened_file("ex", teste);
-
-        /* 
-        //QuickSort medio, melhor e pior caso (date)
-        database = extract_database("tweets_mentioned_persons");
-        QuickSort.sortByDate(database, 0, database.length-1); //medio caso
-        write_ordened_file("tweets_mentioned_persons_date_quickSort_medioCaso", database);
         
+        /* 
+        database = extract_database("tweets_mentioned_persons");
+        QuickSort.sortByMentionedCount(database, 0, database.length -1); //medio caso
+        write_ordened_file("tweets_mentioned_persons_date_quickSort_medioCaso", database);
+         
         CountingSort.sortByDate(database); //melhor caso
         write_ordened_file("tweets_mentioned_persons_date_countingSort_melhorCaso", database);
         MergeSort.mergeByReverseDate(database); //gerando pior caso
@@ -41,7 +39,7 @@ public class Main {
         database = null;
         */
        
-        
+        /* 
         //CountingSort medio, melhor e pior caso (date)
         database = extract_database("tweets_mentioned_persons");
         CountingSort.sortByDate(database); //medio caso
@@ -63,6 +61,7 @@ public class Main {
         CountingSort.sortByMentionedCount(database); //pior caso
         write_ordened_file("tweets_mentioned_persons_count_countingSort_piorCaso", database);
         database = null;
+        */
         
         //HeapSort medio, melhor e pior caso (date)
         database = extract_database("tweets_mentioned_persons");
@@ -97,6 +96,7 @@ public class Main {
         write_ordened_file("tweets_mentioned_persons_user_heapSort_piorCaso", database);
         database = null;
         
+        /* 
         //MergeSort medio, melhor e pior caso (date)
         database = extract_database("tweets_mentioned_persons");
         MergeSort.mergeByDate(database); //medio caso
@@ -129,8 +129,7 @@ public class Main {
         MergeSort.mergeByUser(database); //pior caso
         write_ordened_file("tweets_mentioned_persons_user_mergeSort_piorCaso", database);
         database = null;
-        
-        /* 
+
         //SelectionSort medio, melhor e pior caso (date)
         database = extract_database("tweets_mentioned_persons");
         SelectionSort.sortByDate(database); //medio caso
@@ -141,6 +140,7 @@ public class Main {
         SelectionSort.sortByDate(database); //pior caso
         write_ordened_file("tweets_mentioned_persons_date_selectionSort_piorCaso", database);
         database = null;
+
 
         //SelectionSort medio, melhor e pior caso (count)
         database = extract_database("tweets_mentioned_persons");
@@ -153,6 +153,7 @@ public class Main {
         write_ordened_file("tweets_mentioned_persons_count_selectionSort_piorCaso", database);
         database = null;
 
+
         //SelectionSort medio, melhor e pior caso (user)
         database = extract_database("tweets_mentioned_persons");
         SelectionSort.sortByUser(database); //medio caso
@@ -164,17 +165,22 @@ public class Main {
         write_ordened_file("tweets_mentioned_persons_user_selectionSort_piorCaso", database);
         database = null;
 
+
         //InsertionSort medio, melhor e pior caso (date)
         database = extract_database("tweets_mentioned_persons");
         InsertionSort.sortByDate(database); //medio caso
+        System.out.println("I d um");
         write_ordened_file("tweets_mentioned_persons_date_insertionSort_medioCaso", database);
         InsertionSort.sortByDate(database); //melhor caso
+        System.out.println("I d dois");
         write_ordened_file("tweets_mentioned_persons_date_insertionSort_melhorCaso", database);
         MergeSort.mergeByReverseDate(database); //gerando pior caso
         InsertionSort.sortByDate(database); //pior caso
+        System.out.println("I d tres");
         write_ordened_file("tweets_mentioned_persons_date_insertionSort_piorCaso", database);
         database = null;
 
+        /*
         //InsertionSort medio, melhor e pior caso (count)
         database = extract_database("tweets_mentioned_persons");
         InsertionSort.sortByMentionedCount(database); //medio caso
@@ -186,17 +192,22 @@ public class Main {
         write_ordened_file("tweets_mentioned_persons_count_insertionSort_piorCaso", database);
         database = null;
 
+
         //InsertionSort medio, melhor e pior caso (user)
         database = extract_database("tweets_mentioned_persons");
         InsertionSort.sortByUser(database); //medio caso
+        System.out.println("I u um");
         write_ordened_file("tweets_mentioned_persons_user_insertionSort_medioCaso", database);
-        InsertionSort.sortByUser(database); //melhor caso
+        InsertionSort.sortByUser(database); //melhor caso]
+        System.out.println("I u dois");
         write_ordened_file("tweets_mentioned_persons_user_insertionSort_melhorCaso", database);
         MergeSort.mergeByReverseUser(database); //gerando pior caso
         InsertionSort.sortByUser(database); //pior caso
+        System.out.println("I u tres");
         write_ordened_file("tweets_mentioned_persons_user_insertionSort_piorCaso", database);
-        database = null;
+        database = null
         */
+
     }
 
     public static Tweet[] extract_tweets_database(String dir){
