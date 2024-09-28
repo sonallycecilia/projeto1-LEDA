@@ -14,4 +14,6 @@ Para o sistema Windows, lembre-se de utilizar duas barras \\ ao invés de uma.
 
 Para sistemas MacOS e Linux, o caminho do diretório utiliza barras simples / ao invés de barras duplas. Garanta que o caminho esteja no formato correto.
 
-![Exemplo onde a string deve ser inserida](https://raw.githubusercontent.com/sonallycecilia/UEPB/refs/heads/main/Captura%20de%20tela%202024-09-27%20200452.png?token=GHSAT0AAAAAACV6J2FVLC3NGEPJQCQCECHKZXXJILQ)
+![Exemplo onde a string deve ser inserida](https://ibb.co/D7Ccx4L)
+
+Link para o relatório: (https://docs.google.com/document/d/1j4ngtOHIi3rq7PfFE_GGNdIWYqOQ8eChn6Y01_voC3o/edit)
